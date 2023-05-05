@@ -69,7 +69,7 @@
 5030 VPOKE &H184B+I,161+I:VPOKE &H186B+I,193+I
 5050 VPOKE &H188E+I,168+I:VPOKE &H18AE+I,200+I
 5060 NEXT I
-5070 FOR I=0 TO 14:VPOKE &H18E9+I,175+I:NEXT I
+5070 FOR I=0 TO 15:VPOKE &H18E8+I,175+I:NEXT I:GOSUB 8800
 5080 LOCATE 11,12:PRINT "PUSH BUTTON";
 5090 LOCATE 8,16:PRINT "[ABURI GAMES 2023";
 5100 LOCATE 7,18:PRINT "ALL RIGHTS RESERVED";
@@ -136,17 +136,17 @@
 8270 LOCATE 0,19:PRINT "ooh";
 8280 RETURN
 
-8800 ' ***** THEME 1 *****
+8800 ' ***** MAIN THEME *****
 8810 PLAY "T110V12L16O4ER16FGR16O5CC8","T110V12L16O3R8R16CR16O4CO3CR16","T110V12O4L16CV6CV12DEV6EV12GG8"
 8820 PLAY "C4O4DR16EF","O4CO3CR16O4CO3CR16O4CO2G","G4O3BV6BV12AO4D"
 8830 PLAY "F2","R16O3BO2GR16O3BO2GR16O3B","D2"
 8840 PLAY "GR16ABR16O5EE8","O2GR16O3BO2GR16R16","EV6EV12FGV6GV12BB8"
 8850 PLAY "E4O4AR16BO5C","O3BO2GR16O3BO2AR16O3BO3C","B4EV6EV12FG"
 8860 PLAY "C2","C2","G2"
-8870 END
+8870 IF PLAY(0) THEN 8870 ELSE RETURN
 
 9000 ' ***** INITIALIZE *****
-9050 DIM X(8),Y(8),F(8),VX(8),VY(8):C=2514::GS=1
+9050 DIM X(8),Y(8),F(8),VX(8),VY(8):C=2531::GS=1
 9060 FOR I=1 TO 8:READ VX(I),VY(I):NEXT I
 9070 ' PATTERN GENERATE TABLE & COLOR TABLE
 9080 READ A:IF A=999 THEN 9110
@@ -255,36 +255,38 @@
 10900 DATA 172, 00, 9b, 9b, db, db, fb, fb, fb, 80, 90, 80, 90, a0, 90, a0, b0
 10910 DATA 173, 00, fc, f9, fb, 03, f3, f1, f0, 80, 90, 80, 90, a0, 90, a0, b0
 10920 DATA 174, 40, e0, f0, e0, c0, c0, e0, f0, 80, 90, 80, 90, a0, 90, a0, b0
-10930 DATA 175, 6c, aa, aa, aa, ea, aa, aa, 00, 90, b0, a0, b0, e0, b0, e0, b0
-10940 DATA 176, c0, a0, a0, a0, a0, a0, c0, 00, 80, b0, a0, b0, e0, b0, e0, b0
-10950 DATA 177, ea, 4a, 4a, 4e, 4a, 4a, 4a, 00, 90, b0, a0, b0, e0, b0, e0, b0
-10960 DATA 178, e0, 80, 80, e0, 80, 80, e0, 00, 90, b0, a0, b0, e0, b0, e0, b0
-10970 DATA 179, a4, a4, a4, e4, a4, a4, a4, 00, 90, b0, a0, b0, e0, b0, e0, b0
-10980 DATA 180, cc, aa, aa, aa, aa, aa, cc, 00, 90, b0, a0, b0, e0, b0, e0, b0
-10990 DATA 181, ec, 8a, 8a, ea, 8a, 8a, ea, 00, 90, b0, a0, b0, e0, b0, e0, b0
-11000 DATA 182 ,0e, 04, 04, 04, 04, 04, 04, 00, 90, b0, a0, b0, e0, b0, e0, b0
-11010 DATA 183, ce, a8, a8, ce, a8, a8, ae, 00, 90, b0, a0, b0, e0, b0, e0, b0
-11020 DATA 184, 4a, aa, 8a, 4a, 2a, aa, 4e, 00, 90, b0, a0, b0, e0, b0, e0, b0
-11030 DATA 185, ce, a8, a8, ce, a8, a8, ae, 00, 90, b0, a0, b0, e0, b0, e0, b0
-11040 DATA 186, 04, 04, 04, 04, 04, 04, 04, 00, 90, b0, a0, b0, e0, b0, e0, b0
-11050 DATA 187, c0, a0, a0, a0, a0, a0, a0, 00, 90, b0, a0, b0, e0, b0, e0, b0
-11060 DATA 188, 44, aa, 8a, 8a, 8e, aa, 4a, 00, 90, b0, a0, b0, e0, b0, e0, b0
-11070 DATA 189, ae, a8, a8, ae, a8, a8, 4e, 00, 90, b0, a0, b0, e0, b0, e0, b0
-11080 DATA 193, 3c, 3c, 38, 38, 3e, fe, fe, e0, a0, b0, a0, b0, e0, b0, e0, b0
-11090 DATA 194, 77, f7, f7, f3, f3, e0, 00, 00, a0, b0, a0, b0, e0, b0, e0, a0
-11100 DATA 195, 98, b9, bf, bf, be, 00, 00, 00, a0, b0, a0, b0, e0, b0, e0, b0
-11110 DATA 196, dc, 9d, bd, 3d, 3d, 00, 00, 00, a0, b0, a0, b0, e0, b0, e0, b0
-11120 DATA 197, fe, fe, c6, c6, c0, 00, 00, 00, a0, b0, a0, b0, e0, b0, e0, b0
-11130 DATA 198, ee, ee, ee, e6, 00, 00, 00, 00, a0, b0, a0, b0, e0, b0, e0, b0
-11140 DATA 199, 7f, e3, e7, e7, 00, 00, 00, 00, a0, b0, a0, b0, e0, b0, e0, b0
-11150 DATA 200, 1f, 0f, 0f, 1f, 7e, fc, 78, 30, a0, b0, a0, b0, e0, b0, e0, b0
-11160 DATA 201, 7f, 71, 71, 71, 70, 60, 00, 00, a0, b0, a0, b0, e0, b0, e0, b0
-11170 DATA 202, dc, df, cf, c7, 00, 00, 00, 00, a0, b0, a0, b0, e0, b0, e0, b0
-11180 DATA 203, 77, f7, e7, c7, 00, 00, 00, 00, a0, b0, a0, b0, e0, b0, e0, b0
-11190 DATA 204, 7b, 7b, 3b, 3b, 00, 00, 00, 00, a0, b0, a0, b0, e0, b0, e0, b0
-11200 DATA 205, 00, f9, f3, f7, 03, 01, 00, 00, a0, b0, a0, b0, e0, b0, e0, b0
-11210 DATA 206, f0, e0, e0, c0, 80, 00, 00, 00, a0, b0, a0, b0, e0, b0, e0, b0
-11220 DATA 999
+
+10930 DATA 175, 4c, aa, aa, aa, ea, aa, aa, 00, 90, 90, a0, b0, e0, b0, e0, b0
+10940 DATA 176, c0, a0, a0, a0, a0, a0, c0, 00, 90, 90, a0, b0, e0, b0, e0, b0
+10950 DATA 177, ea, 4a, 4a, 4e, 4a, 4a, 4a, 00, 90, 90, a0, b0, e0, b0, e0, b0
+10960 DATA 178, e0, 80, 80, e0, 80, 80, e0, 00, 90, 90, a0, b0, e0, b0, e0, b0
+10970 DATA 179, a4, a4, a4, e4, a4, a4, a4, 00, 90, 90, a0, b0, e0, b0, e0, b0
+10980 DATA 180, cc, aa, aa, aa, aa, aa, cc, 00, 90, 90, a0, b0, e0, b0, e0, b0
+10990 DATA 181, ec, 8a, 8a, ea, 8a, 8a, ea, 00, 90, 90, a0, b0, e0, b0, e0, b0
+11000 DATA 182, 0e, 04, 04, 04, 04, 04, 04, 00, 90, 90, a0, b0, e0, b0, e0, b0
+11010 DATA 183, ce, a8, a8, ce, a8, a8, ae, 00, 90, 90, a0, b0, e0, b0, e0, b0
+11020 DATA 184, 44, aa, a8, a4, e2, aa, a4, 00, 90, 90, a0, b0, e0, b0, e0, b0
+11030 DATA 185, ac, aa, aa, ac, aa, aa, ea, 00, 90, 90, a0, b0, e0, b0, e0, b0
+11040 DATA 186, e0, 80, 80, e0, 80, 80, e0, 00, 90, 90, a0, b0, e0, b0, e0, b0
+11050 DATA 187, 4c, 4a, 4a, 4a, 4a, 4a, 4a, 00, 90, 90, a0, b0, e0, b0, e0, b0
+11060 DATA 188, 04, 0a, 08, 08, 08, 0a, 04, 00, 90, 90, a0, b0, e0, b0, e0, b0
+11070 DATA 189, 4a, aa, aa, aa, ea, aa, a4, 00, 90, 90, a0, b0, e0, b0, e0, b0
+11080 DATA 190, e0, 80, 80, e0, 80, 80, e4, 00, 90, 90, a0, b0, e0, b0, e0, b0
+11090 DATA 193, 3c, 3c, 38, 38, 3e, fe, fe, e0, a0, b0, a0, b0, e0, b0, e0, b0
+11100 DATA 194, 77, f7, f7, f3, f3, e0, 00, 00, a0, b0, a0, b0, e0, b0, e0, a0
+11110 DATA 195, 98, b9, bf, bf, be, 00, 00, 00, a0, b0, a0, b0, e0, b0, e0, b0
+11120 DATA 196, dc, 9d, bd, 3d, 3d, 00, 00, 00, a0, b0, a0, b0, e0, b0, e0, b0
+11130 DATA 197, fe, fe, c6, c6, c0, 00, 00, 00, a0, b0, a0, b0, e0, b0, e0, b0
+11140 DATA 198, ee, ee, ee, e6, 00, 00, 00, 00, a0, b0, a0, b0, e0, b0, e0, b0
+11150 DATA 199, 7f, e3, e7, e7, 00, 00, 00, 00, a0, b0, a0, b0, e0, b0, e0, b0
+11160 DATA 200, 1f, 0f, 0f, 1f, 7e, fc, 78, 30, a0, b0, a0, b0, e0, b0, e0, b0
+11170 DATA 201, 7f, 71, 71, 71, 70, 60, 00, 00, a0, b0, a0, b0, e0, b0, e0, b0
+11180 DATA 202, dc, df, cf, c7, 00, 00, 00, 00, a0, b0, a0, b0, e0, b0, e0, b0
+11190 DATA 203, 77, f7, e7, c7, 00, 00, 00, 00, a0, b0, a0, b0, e0, b0, e0, b0
+11200 DATA 204, 7b, 7b, 3b, 3b, 00, 00, 00, 00, a0, b0, a0, b0, e0, b0, e0, b0
+11210 DATA 205, 00, f9, f3, f7, 03, 01, 00, 00, a0, b0, a0, b0, e0, b0, e0, b0
+11220 DATA 206, f0, e0, e0, c0, 80, 00, 00, 00, a0, b0, a0, b0, e0, b0, e0, b0
+11230 DATA 999
 12000 ' ***** SPRITE PATERN *****
 12010 ' 00 : SHONES RIGHT (1)
 12020 DATA 04,0A,0C,1A,27,40,3F,1E,1C,0C,1E,2F,1E,22,27,12
@@ -341,4 +343,3 @@
 12530 DATA 00,00,1F,2B,29,3F,1F,1E,00,00,03,06,0A,0A,00,00
 12540 DATA 00,00,00,80,80,80,00,C0,60,B0,70,18,70,30,48,D8
 12550 DATA *
-
