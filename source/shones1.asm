@@ -1,9 +1,13 @@
+RDVRM:      EQU 0x004A                  ; BIOS RDVRM
+WRTVRM:     EQU 0x004D                  ; BIOS WRTVRM
+FILVRM:     EQU 0x0056                  ; BIOS FILVRM
 LDIRVM:     EQU 0x005C                  ; BIOS LDIRVM
 
     ORG 0xC000
-
+    ; ********************************
 	; パターンジェネレータテーブル・カラーテーブル設定
 	; BASICプログラムでスクリーンモード等設定済の前提で呼び出すこと
+    ; ********************************
 	CALL SET_PTN_TBL
 	CALL SET_COL_TBL
     CALL SET_SPRITE_PTN_TBL
@@ -49,6 +53,59 @@ SET_SPRITE_PTN_TBL:
 	LD BC,576
 	CALL LDIRVM
 	RET
+
+    ORG 0xC100
+    ; ********************************
+    ; 逆スクロールルーチン
+    ; ********************************
+    LD HL,0x1A7B                        ; 処理開始VRAMアドレス (スクロール範囲の右下端)
+    LD B,0x14                           ; 行数カウンタ 20行
+
+    ; 外部ループ処理 開始
+    ; 全行に対しての処理を行う
+OUTLOOP:
+    PUSH BC
+    LD B,0x18                           ; 桁数カウンタ 24桁
+
+    ; 内部ループ処理 開始
+    ; 1行に対しての処理を行う
+INLOOP:
+    ; 1行上のVRAMアドレスのデータを読む
+    PUSH BC
+    PUSH HL
+    LD BC,0x0020                        ; BC=32
+    SBC HL,BC                           ; HL=HL-BC ＝1行上のアドレスとなる
+    CALL RDVRM                          ; BIOS RDVRM呼び出し
+                                        ; - HL : 読み取るアドレス
+                                        ; - A  : 読み取ったデータ
+    POP HL
+    POP BC
+
+    ; 現在のVRAMアドレスにデータを書き込む
+    CALL WRTVRM                         ; BIOS WRTVRM呼び出し
+                                        ; - HL : 書き込み先のVRAMアドレス
+                                        ; - A  : 書き込むデータ
+
+    DEC HL                              ; ひとつ左のアドレスに移動
+    DJNZ INLOOP                         ; B>0の間、INLOOPラベルにジャンプ
+    ; 内部ループ処理 終了
+
+    LD BC,0x0008                        ; 前回の処理終了アドレスから左右余白の8文字分を減算し、処理開始アドレスとする
+    SBC HL,BC
+    POP BC
+    DJNZ OUTLOOP                        ; B>0の間、OUTLOOPラベルにジャンプ
+    ; 外部ループ処理 終了
+
+    ; 1行目をクリアする
+    LD HL,0x1804                        ; 処理開始VRAMアドレス
+    LD BC,0x0018                        ; 桁数カウンタ 24桁
+    LD A,' '                            ; 空白を設定
+    CALL FILVRM                         ; BIOS WRTVRM呼び出し
+                                        ; - HL : 書き込み先のVRAMアドレス
+                                        ; - BC : 書き込むデータ長
+                                        ; - A  : 書き込むデータ
+    
+    RET
 
 BANK_PATTERN_0:
 	DB 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
