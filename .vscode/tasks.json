@@ -14,7 +14,7 @@
             "label": "Run openmsx",
             "type": "shell",
             "linux": {
-                "command": "openmsx"
+                "command": "openmsx -diska ${workspaceRoot}/source"
             }
         }
     ]

@@ -20,16 +20,9 @@ cd source
 pasmo --msx shones1.asm program.bin
 ```
 
-2. Execute openmsx (use basic-bios)
+2. Execute openmsx (use DiskBasic-bios)
 ```
-openmsx
-```
-
-3. Mount source directory (openmsx)
-
-4. Run (openmsx)
-```
-RUN "AUTOEXEC.BAS"
+openmsx -diska .
 ```
 
 <br>
@@ -37,7 +30,6 @@ RUN "AUTOEXEC.BAS"
 ## Thanks
 
 - MSXPen
-
 - Pasmo : https://pasmo.speccy.org/
 - openmsx : https://openmsx.org/
 - TinySprite
