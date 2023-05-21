@@ -11,10 +11,17 @@
             }
         },
         {
-            "label": "Run openmsx",
+            "label": "Run openmsx with execute",
             "type": "shell",
             "linux": {
                 "command": "openmsx -diska ${workspaceRoot}/source"
+            }
+        },
+        {
+            "label": "Run openmsx",
+            "type": "shell",
+            "linux": {
+                "command": "openmsx"
             }
         }
     ]
