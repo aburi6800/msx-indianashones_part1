@@ -105,7 +105,7 @@
 
 1600 ' ***** ROCK *****
 1610 IF INT(RND(1)*5)<>0 THEN RETURN
-1620 X=RND(1)*23+5:LOCATE X,1:PRINT "ij";:LOCATE X,2:PRINT "kl";:RETURN
+1620 X=RND(1)*22+5:LOCATE X,1:PRINT "ij";:LOCATE X,2:PRINT "kl";:RETURN
 
 1700 ' ***** MISS *****
 1710 GOSUB 8600:JF=1:P(0)=8:R(0)=0:GOSUB 150
@@ -211,6 +211,7 @@
 
 8000 ' ***** COMMON SCREEN MAKE *****
 8010 LOCATE 0, 0:PRINT "faaf                        aafa";
+8015 IF GS>1 AND GS<7 THEN LOCATE 4, 0:PRINT "babfaaabaaaaafbfaafaaaab";
 8020 LOCATE 0, 1:PRINT "aafd                        ceba";
 8030 LOCATE 0, 2:PRINT "bff                          aaf";
 8040 LOCATE 0, 3:PRINT "fac                          daf";
