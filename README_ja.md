@@ -24,7 +24,7 @@ MSX-BASICで作成しています。
 
 - 以下のURLにアクセスしてください。
 
-https://webmsx.org/?MACHINE=MSX1J&DISKA_URL=https://github.com/aburi6800/msx-indianashones_part1/raw/main/Shones1.dsk&FAST_BOOT
+https://webmsx.org/?MACHINE=MSXTRJ&DISKA_URL=https://github.com/aburi6800/msx-indianashones_part1/raw/main/Shones1.dsk&FAST_BOOT
 
 <br>
 
