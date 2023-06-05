@@ -20,11 +20,15 @@ MSX-BASICで作成しています。
 
 <br>
 
-## WebMSXでの実行
+## 実行
 
-- 以下のURLにアクセスしてください。
+- WebMSXで実行するには、以下のURLにアクセスしてください。
 
 https://webmsx.org/?MACHINE=MSXTRJ&DISKA_URL=https://github.com/aburi6800/msx-indianashones_part1/raw/main/Shones1.dsk&FAST_BOOT
+
+- ディスクイメージは以下からダウンロードできます。
+
+https://github.com/aburi6800/msx-indianashones_part1/raw/main/Shones1.dsk
 
 <br>
 

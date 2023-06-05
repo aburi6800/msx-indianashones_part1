@@ -20,11 +20,15 @@ It was created in MSX-BASIC.
 
 <br>
 
-## Play on WebMSX
+## execution
 
-- Please access the following URL.
+- To run on WebMSX, go to the following URL :
 
 https://webmsx.org/?MACHINE=MSXTRJ&DISKA_URL=https://github.com/aburi6800/msx-indianashones_part1/raw/main/Shones1.dsk&FAST_BOOT
+
+- Disk images can be downloaded from :
+
+https://github.com/aburi6800/msx-indianashones_part1/raw/main/Shones1.dsk
 
 <br>
 
